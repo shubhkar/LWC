@@ -1,0 +1,68 @@
+<!-- sldsValidatorIgnore -->
+
+  
+  <template>
+    <lightning-card  title="TODO LIST" style="width: 100%;" >
+        <lightning-button-icon slot="actions" icon-name="utility:sync" alternative-text="sync" title="sync" onclick={syncTaskToList}></lightning-button-icon>
+        <lightning-layout>
+        <lightning-layout-item padding="around-small" size="12">
+
+          <ul class="slds-has-dividers_around-space">
+            <template for:each={todoTasks} for:item="todoTask">
+ 
+      <li class="slds-item" key={todoTask.id}>
+              
+                <lightning-layout
+                vertical-align="center"
+                horizontal-align="spread"
+               
+                >
+
+                <lightning-layout-item
+                 
+                  padding="horizontal-small">
+                    {todoTask.name}
+                  </lightning-layout-item>
+                
+                <lightning-layout-item padding="horizontal-small">
+              <lightning-button-icon  icon-name="utility:delete" alternative-text="delete" title="delete" onclick={deleteTaskToList}>
+
+              </lightning-button-icon>
+            </lightning-layout-item>
+          </lightning-layout>
+
+          </li>
+            </template>
+     
+           </ul>
+        </lightning-layout-item>
+      </lightning-layout>
+     
+        <p slot="footer">
+          <lightning-layout  pull-to-boundary="medium">
+
+            <lightning-layout-item flexibility="grow" padding="horizontal-small"  >
+              <lightning-input type="text" 
+              variant="label-hidden" 
+               placeholder="Enter New Task"
+               label="New Task"
+               value={newTask}
+               onchange={updateNewTask}
+               required
+              >
+              </lightning-input>
+            </lightning-layout-item>
+         <lightning-layout-item flexibility="auto" padding="horizontal-small" >
+
+          <lightning-button variant="brand" label="Add" title="Primary action" onclick={addTaskToList} class="slds-m-left_x-small" ></lightning-button>
+
+         </lightning-layout-item>
+
+         
+        </lightning-layout>
+        </p>
+    </lightning-card>
+</template>
+
+
+
